@@ -22,7 +22,6 @@ function DetailBerita() {
   };
 
   useEffect(() => {
-    // setBerita();
     getBerita();
   }, [url]);
   return (

@@ -11,7 +11,7 @@ function ListBerita(props) {
   const url = "https://api-sindo.herokuapp.com";
   const getBerita = async () => {
     if (keyword) {
-      console.log(kategori+keyword);
+      console.log(kategori + keyword);
       const response = await axios.get(url + kategori + keyword);
       setlistBerita(response.data.data);
     } else {
