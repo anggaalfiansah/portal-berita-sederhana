@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Navigasi from './components/Navbar';
+import ListBerita from "./components/ListBerita";
+import DetailBerita from "./components/DetailBerita";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navigasi/>
+      <Switch>
+        <Route exact path="/">
+          <ListBerita kategori="" />
+        </Route>
+        <Route exact path="/Home">
+          <ListBerita kategori=""/>
+        </Route>
+        <Route exact path="/Nasional">
+          <ListBerita kategori="/nasional" />
+        </Route>
+        <Route exact path="/Internasional">
+          <ListBerita kategori="/internasional" />
+        </Route>
+        <Route exact path="/Olahraga">
+          <ListBerita kategori="/category/?type=olahraga" />
+        </Route>
+        <Route exact path="/Lifestyle">
+          <ListBerita kategori="/category/?type=lifestyle" />
+        </Route>
+        <Route exact path="/Teknologi">
+          <ListBerita kategori="/category/?type=teknologi" />
+        </Route>
+        <Route exact path="/Ekbis">
+          <ListBerita kategori="/category/?type=eksbis" />
+        </Route>
+        <Route exact path="/kalam">
+          <ListBerita kategori="/category/?type=kalam" />
+        </Route>
+        <Route exact path="/Cari/:keyword">
+          <ListBerita kategori="/search/?q=" />
+        </Route>
+        <Route exact path="/detail/:url">
+          <DetailBerita />
+        </Route>
+      </Switch>
+      <Footer/>
+  </Router>
   );
 }
 
